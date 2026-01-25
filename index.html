@@ -16,7 +16,7 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: url('assets/background.png') center top / cover no-repeat fixed;
             min-height: 100vh;
         }
 
@@ -28,11 +28,28 @@
 
         header {
             text-align: center;
-            padding: 60px 20px;
-            background: rgba(0, 0, 0, 0.2);
+            background: none;
             margin-bottom: 40px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 960px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         h1 {
@@ -73,9 +90,11 @@
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 30px;
-            margin-bottom: 30px;
+            margin: 0 auto 30px;
+            max-width: 720px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .event-card:hover {
@@ -120,10 +139,28 @@
             color: #222;
         }
 
+        /* Ensure poster centers within the card */
+        .main-event {
+            display: grid;
+        }
+        .main-event .event-poster {
+            justify-self: center;
+        }
+
+        /* Poster image styling */
+        .event-poster {
+            display: block;
+            width: 80%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
         footer {
             text-align: center;
             padding: 30px 20px;
-            color: #fff;
+            color: #080000;
             font-size: 1em;
         }
 
@@ -154,54 +191,83 @@
 <body>
     <div class="container">
         <header>
-            <h1>War On Easter</h1>
-            <p class="subtitle">Single-Day Music Festival</p>
-            <p class="location">Birmingham, Alabama</p>
+            <span class="sr-only">War On Easter - Single-Day Music Festival in Birmingham, Alabama</span>
+            <img src="assets/woeseperate.png" alt="War On Easter festival wordmark" class="hero-image">
         </header>
 
         <section class="events-section">
             <h2 class="section-title">Road To War On Easter</h2>
             
-            <div class="event-card">
-                <h3 class="event-title">Road To War On Easter - Date 1</h3>
-                <p class="event-date">Date: TBA</p>
+            <div class="event-card" data-url="https://www.etix.com/ticket/p/44932945/brendan-kelly-from-the-lawrence-arms-the-falcon-saint-louis-the-sinkhole">
+                <h3 class="event-title">The Sinkhole - St. Louis, Missouri</h3>
+                <p class="event-date">Date: 03/12/2026 </p>
                 <p class="event-description">
-                    Join us for the first stop on the Road to War On Easter tour! 
-                    Experience incredible performances as we build momentum toward the main event. 
-                    Location and lineup details coming soon.
+                    Brendan Kelly, Tightwire, and The Handsome Scoundrels!
                 </p>
+                <p class="event-description"><strong>Click to buy tickets!</strong></p>
             </div>
 
-            <div class="event-card">
-                <h3 class="event-title">Road To War On Easter - Date 2</h3>
-                <p class="event-date">Date: TBA</p>
+            <div class="event-card" data-url="https://example.com/nashville">
+                <h3 class="event-title">The Cobra - Nashville, Tennessee</h3>
+                <p class="event-date">Date: 03/13/2026</p>
                 <p class="event-description">
-                    The second and final stop before the big day! 
-                    Don't miss this opportunity to catch these amazing artists before War On Easter. 
-                    Location and lineup details coming soon.
+                    Brendan Kelly, Tightwire, and The Handsome Scoundrels!
                 </p>
+                <p class="event-description"><strong>Click to buy tickets!</strong></p>
             </div>
         </section>
 
         <section class="events-section">
-            <h2 class="section-title">Main Event</h2>
+            <h2 class="section-title">War On Easter</h2>
             
-            <div class="event-card main-event">
-                <h3 class="event-title">⚡ War On Easter ⚡</h3>
-                <p class="event-date">Date: TBA</p>
+            <div class="event-card main-event" data-url="https://example.com/war-on-easter">
+                <h3 class="event-title">War On Easter</h3>
+                <p class="event-date">TrimTab Brewing, Birmingham, Alabama</p>
+                <p class="event-date">Date: 03/14/2026</p>
                 <p class="event-description">
-                    The ultimate single-day music festival experience in Birmingham, Alabama! 
-                    War On Easter brings together incredible talent for an unforgettable day of music. 
-                    This is the event you've been waiting for - mark your calendars and prepare for an epic celebration!
+                    Brendan Kelly from the Lawrence Arms and The Falcon is bringing the 
+                    tradition and guerilla warfare tactics of War on Christmas from Chicago to Birmingham, AL 
+                    for War On Easter! Featuring Brendan Kelly, Tightwire, The Handsome Scoundrels, 
+                    Penny Circus, and The Enough Alreadys. 
                 </p>
+                <p class="event-description"><strong>Click to buy tickets!</strong></p>
+                <img
+                    src="assets/woeposter.png"
+                    alt="War On Easter event poster"
+                    class="event-poster"
+                    loading="lazy"
+                    decoding="async"
+                />
             </div>
         </section>
 
         <footer>
-            <p>&copy; <span id="year"></span> War On Easter. All rights reserved.</p>
+            <p>&copy; <span id="year"></span> Red Scare Industries x You Had Options. All rights reserved.</p>
         </footer>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Make event cards clickable via data-url
+        const cards = document.querySelectorAll('.event-card');
+        cards.forEach(card => {
+            const url = card.dataset.url;
+            if (!url) return;
+            const target = card.dataset.target || '_blank';
+            const features = 'noopener';
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'link');
+            card.addEventListener('click', () => {
+                const win = window.open(url, target, features);
+                if (win) win.opener = null;
+            });
+            card.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const win = window.open(url, target, features);
+                    if (win) win.opener = null;
+                }
+            });
+        });
     </script>
     </div>
 </body>
